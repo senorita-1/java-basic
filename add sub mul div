@@ -1,0 +1,53 @@
+package pract;
+
+public class sumandsubtract {
+	public static void main(String[] args) {
+		int c[][] = {{881,25,93},{84,55,65},{8,82,79}};
+		int d[][] = {{581,25,36},{58,55,88},{8,18,9}};
+		int e[][] = new int[3][3];
+		int f[][] = new int[3][3];
+		int g[][] = new int[3][3];
+		int h[][] = new int[3][3];
+				for(int i=0;i<c.length;i++) {
+			for(int j=0;j<d.length;j++) {
+				e[i][j]=c[i][j]+d[i][j];
+				System.out.print(e[i][j]+"\t");
+
+}
+			System.out.println();
+			
+}
+				System.out.print("\n");
+				
+		for(int i=0;i<c.length;i++) {
+			for(int j=0;j<d.length;j++) {
+				f[i][j]=c[i][j]-d[i][j];
+				System.out.print(f[i][j]+"\t");
+
+}
+			System.out.println();
+}
+		System.out.print("\n");
+		for(int i=0;i<c.length;i++) {
+			for(int j=0;j<d.length;j++) {
+				g[i][j]=e[i][j]*f[i][j];
+				System.out.print(g[i][j]+"\t");
+
+}
+			System.out.println();
+}
+		System.out.print("\n");
+		for(int i=0;i<c.length;i++) {
+			for(int j=0;j<d.length;j++) {
+				h[i][j]=c[i][j]%d[i][j];
+				System.out.print(f[i][j]+"\t");
+
+}
+			System.out.println();
+}
+		System.out.print("\n");
+		
+
+
+	}
+}
