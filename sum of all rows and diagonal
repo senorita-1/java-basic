@@ -1,1 +1,45 @@
+package pract;
+import java.util.*;
+public class sumofall
+{ 
+
+
+	public static void main(String[] args) {
+		Random r =new Random();
+		int a[][]=new int[3][3];
+		int sum=0;
+		for(int i=0;i<a.length;i++) {
+			for(int j=0;j<a.length;j++) {
+				a[i][j]=r.nextInt(1,50);
+				
+			}
+			
+		}
+		for(int u=0;u<a.length;u++) {
+			
+			for(int k=0;k<a.length;k++ ){
+				System.out.print(a[u][k]+" \t");
+				
+			}
+			System.out.println();
+			}
+		for(int v=0;v<a.length;v++) {
+			for(int z=0;z<a.length;z++) {
+				if (a[v]==a[z]) {
+					sum += a[v][z];
+				}
+			}
+		}
+		System.out.println("sum of the diagonal"+sum);
+		int columnsum=0;
+		for(int l=0;l<a.length;l++) {
+			columnsum+=a[l][1];
+			
+		}
+		System.out.println("the row sum is" +columnsum);
+	}
+}
+
+		
+
 
