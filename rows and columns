@@ -1,0 +1,30 @@
+package test2;
+
+public class rowsandcolns {
+	public static void main(String[] args) {
+		int a[][] = {{1,2,6},{5,5,6},{11,8,9}};
+		
+		System.out.println("Sum of row: ");
+		for(int i = 0; i < a.length; i++) {
+			int rowsum = 0;
+			for(int j = 0; j < a.length; j++) {
+				rowsum += a[i][j];
+				
+			}
+			System.out.println("row sum for row " + i + " is " + rowsum);
+		}
+		
+		System.out.println();
+		
+		System.out.println("Sum of column: ");
+		for(int i = 0; i < a.length; i++) {
+			int colsum = 0;
+			for(int j = 0; j < a.length; j++) {
+				colsum += a[j][i];
+				
+			}
+			System.out.println("row sum for row " + i + " is " + colsum);
+		}
+	}
+
+}
