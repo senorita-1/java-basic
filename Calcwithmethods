@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Calculator {
+
+    static int add(int num1, int num2) {
+        return num1 + num2;
+    }
+
+    static int subtract(int num1, int num2) {
+        return num1 - num2;
+    }
+
+    static int multiply(int num1, int num2) {
+        return num1 * num2;
+    }
+
+    static double divide(int num1, int num2, Scanner scanner) {
+        if (num2 != 0) {
+            return (double) num1 / num2;
+        } else {
+            System.out.println("Error: Division by zero");
+            System.out.print("Enter second number again: ");
+            int newNum2 = scanner.nextInt();
+            return divide(num1, newNum2, scanner);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Simple Calculator");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        System.out.println("5. Exit");
+
+        while (true) {
+            System.out.print("Choose an operation (1-5): ");
+            int choice = scanner.nextInt();
+
+            if (choice == 5) {
+                break;
+            }
+
+            System.out.print("Enter first number: ");
+            int num1 = scanner.nextInt();
+
+            System.out.print("Enter second number: ");
+            int num2 = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Result: " + add(num1, num2));
+                    break;
+                case 2:
+                    System.out.println("Result: " + subtract(num1, num2));
+                    break;
+                case 3:
+                    System.out.println("Result: " + multiply(num1, num2));
+                    break;
+                case 4:
+                    System.out.println("Result: " + divide(num1, num2, scanner));
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+}
