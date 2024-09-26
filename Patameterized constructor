@@ -1,0 +1,27 @@
+
+public class Student {
+    private String name;
+    private int age;
+    private String department;
+    private double gpa;
+
+    // Parameterized constructor
+    public Student(String name, int age, String department, double gpa) {
+        this.name = name;
+        this.age = age;
+        this.department = department;
+        this.gpa = gpa;
+    }
+
+    public void printDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Department: " + department);
+        System.out.println("GPA: " + gpa);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student("Jane Doe", 22, "Computer Science", 3.8);
+        s1.printDetails();
+    }
+}
