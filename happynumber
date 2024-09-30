@@ -1,0 +1,29 @@
+package test3;
+
+public class happynumber {
+	 public static void main(String[] args) {
+	        int num = 7;
+	        System.out.println( HappyNumber (num));
+	    }
+
+	    public static boolean HappyNumber (int num) {
+	        while (num != 1 && num != 4) {
+	            num = calculateSumOfSquares(num);
+	        }
+	        return num == 1;
+	    }
+
+	    public static int calculateSumOfSquares(int num) {
+	        int sum = 0;
+	        while (num > 0) {
+	            int digit = num % 10;
+	            sum += digit * digit;
+	            num /= 10;
+	        }
+	        return sum;
+	    }
+	}
+		
+	
+
+
