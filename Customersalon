@@ -1,0 +1,52 @@
+
+interface Salon {
+    void provideService();
+}
+
+// Salon classes
+class HairSalon implements Salon {
+    @Override
+    public void provideService() {
+        System.out.println("Haircut and styling services provided.");
+    }
+}
+
+class NailSalon implements Salon {
+    @Override
+    public void provideService() {
+        System.out.println("Nail trimming and polishing services provided.");
+    }
+}
+
+class SpaSalon implements Salon {
+    @Override
+    public void provideService() {
+        System.out.println("Massage and relaxation services provided.");
+    }
+}
+
+// Customer class
+class Customer {
+    public void visitSalon(Salon salon) {
+        System.out.println("Customer visiting salon:");
+        salon.provideService();
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Create salon objects
+        Salon hairSalon = new HairSalon();
+        Salon nailSalon = new NailSalon();
+        Salon spaSalon = new SpaSalon();
+
+        // Create customer object
+        Customer customer = new Customer();
+
+        // Customer visits salons
+        customer.visitSalon(hairSalon);
+        customer.visitSalon(nailSalon);
+        customer.visitSalon(spaSalon);
+    }
+} 
