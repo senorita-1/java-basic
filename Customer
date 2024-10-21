@@ -1,0 +1,119 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+class MenuItem {
+    String name;
+    int price;
+    MenuItem(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+}
+class OrderItem {
+    String name;
+    int price;
+    int quantity;
+    OrderItem(String name, int price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+}
+class Customer {
+    static ArrayList<OrderItem> order = new ArrayList<>();
+    static ArrayList<MenuItem> menu = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+    void createMenu() {
+        menu.add(new MenuItem("Pizza", 150));
+        menu.add(new MenuItem("Burger", 100));
+        menu.add(new MenuItem("Sandwich", 80));
+        menu.add(new MenuItem("Coke", 20));
+        menu.add(new MenuItem("Water", 10));
+    }
+    void displayMenu() {
+        System.out.println("\nMenu");
+        for (int i = 0; i < menu.size(); i++) {
+            System.out.println((i + 1) + ". " + menu.get(i).name + " - " + menu.get(i).price);
+        }
+    }
+
+    void placeOrder() {
+        displayMenu();
+        System.out.print("\nEnter item number to order: ");
+        int itemNumber = scanner.nextInt();
+        System.out.print("Enter quantity: ");
+        int quantity = scanner.nextInt();
+
+        if (itemNumber > 0 && itemNumber <= menu.size()) {
+            OrderItem orderItem = new OrderItem(menu.get(itemNumber - 1).name, menu.get(itemNumber - 1).price, quantity);
+            order.add(orderItem);
+            System.out.println("Order placed successfully.");
+        } else {
+            System.out.println("Invalid item number.");
+        }
+    }
+
+    void viewOrder() {
+        if (order.isEmpty()) {
+            System.out.println("No orders placed.");
+        } else {
+            System.out.println("\nYour Order");
+            for (int i = 0; i < order.size(); i++) {
+                System.out.println((i + 1) + ". " + order.get(i).name + " x " + order.get(i).quantity + " - " + (order.get(i).price * order.get(i).quantity));
+            }
+        }
+    }
+
+    void generateBill() {
+        if (order.isEmpty()) {
+            System.out.println("No orders placed.");
+        } else {
+            int total = 0;
+            System.out.println("\nBill");
+            for (int i = 0; i < order.size(); i++) {
+                int subtotal = order.get(i).price * order.get(i).quantity;
+                System.out.println((i + 1) + ". " + order.get(i).name + " x " + order.get(i).quantity + " - " + subtotal);
+                total += subtotal;
+            }
+            System.out.println("Total: " + total);
+            order.clear();
+            System.out.println("Bill generated and order cleared.");
+        }
+    }
+
+    void customerMenu(int option) {
+        if (option == 1) {
+            displayMenu();
+        } else if (option == 2) {
+            placeOrder();
+        } else if (option == 3) {
+            viewOrder();
+        } else if (option == 4) {
+            generateBill();
+        } else if (option == 5) {
+            System.exit(0);
+        } else {
+            System.out.println("Invalid option. Please choose again.");
+        }
+        customerMenu();
+    }
+
+    void customerMenu() {
+        System.out.println("\nCustomer Menu");
+        System.out.println("1. Display Menu");
+        System.out.println("2. Place Order");
+        System.out.println("3. View Order");
+        System.out.println("4. Generate Bill");
+        System.out.println("5. Exit");
+
+        System.out.print("Choose an option: ");
+        int option = scanner.nextInt();
+
+        customerMenu(option);
+    }
+
+    public static void main(String[] args) {
+        Customer customer = new Customer();
+        customer.createMenu();
+        customer.customerMenu();
+    }
+} 
