@@ -1,0 +1,92 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+class Book {
+    int id;
+    String title;
+    String category;
+Book(int id, String title, String category) {
+        this. Id = id;
+        this.title = title;
+        this.category = category;
+    }
+}
+
+class Library {
+    static ArrayList<Book> books = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+    static int bookId = 1;
+
+    void addBook() {
+        System.out.print("Enter book title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter book category : ");
+        String category = scanner.nextLine();
+
+        Book book = new Book(bookId++, title, category);
+        books.add(book);
+        System.out.println("Book added successfully.");
+    }
+
+    void displayBooks() {
+        if (books.isEmpty()) {
+            System.out.println("No books available.");
+        } else {
+            System.out.println("\nBook List");
+            for (Book book : books) {
+                System.out.println((System.in ) + ". " + book.title + " (" + book.category + ")");
+            }
+        }
+    }
+
+    void displayBooksByCategory() {
+        System.out.print("Enter category : ");
+        String category = scanner.nextLine();
+
+        boolean found = false;
+        System.out.println("\nBook List (" + category + ")");
+        for (Book book : books) {
+            if (book.category.equalsIgnoreCase(category)) {
+                System.out.println((System.in ) + ". " + book.title);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No books found in " + category + " category.");
+        }
+    }
+
+    void libraryMenu(int option) {
+        if (option == 1) {
+            addBook();
+        } else if (option == 2) {
+            displayBooks();
+        } else if (option == 3) {
+            displayBooksByCategory();
+        } else if (option == 4) {
+            System.exit(0);
+        } else {
+            System.out.println("Invalid option. Please choose again.");
+        }
+        libraryMenu();
+    }
+
+    void libraryMenu() {
+        System.out.println("\nLibrary Menu");
+        System.out.println("1. Add Book");
+        System.out.println("2. Display All Books");
+        System.out.println("3. Display Books by Category");
+        System.out.println("4. Exit");
+
+        System.out.print("Choose an option: ");
+        int option = scanner.nextInt();
+        scanner.nextLine()
+
+        libraryMenu(option);
+    }
+
+    public static void main(String[] args) {
+        Library library = new Library();
+        library.libraryMenu();
+    }
+}
