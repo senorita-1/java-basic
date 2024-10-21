@@ -1,0 +1,136 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class User {
+    String username;
+    String password;
+
+    User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+}
+
+class MenuItem {
+    int id;
+    String name;
+    int price;
+
+    MenuItem(int id, String name, int price) {
+        (link unavailable) = id;
+        this.name = name;
+        this.price = price;
+    }
+}
+
+class Order {
+    ArrayList<MenuItem> items = new ArrayList<>();
+
+    void addItem(MenuItem item) {
+        items.add(item);
+    }
+
+    int calculateTotal() {
+        int total = 0;
+        for (MenuItem item : items) {
+            total += item.price;
+        }
+        return total;
+    }
+
+    void displayOrder() {
+        System.out.println("\nYour Order:");
+        for (MenuItem item : items) {
+            System.out.println((link unavailable) + ". " + item.name + " - $" + item.price);
+        }
+        System.out.println("Total: $" + calculateTotal());
+    }
+}
+
+class Restaurant {
+    ArrayList<MenuItem> menu = new ArrayList<>();
+    ArrayList<User> users = new ArrayList<>();
+    Scanner scanner = new Scanner(System.in);
+
+    void addUser(String username, String password) {
+        users.add(new User(username, password));
+    }
+
+    void authenticate(String username, String password) {
+        for (User user : users) {
+            if (user.username.equals(username) && user.password.equals(password)) {
+                System.out.println("Login successful!");
+                return;
+            }
+        }
+        System.out.println("Invalid username or password.");
+    }
+
+    void addMenuItem(int id, String name, int price) {
+        menu.add(new MenuItem(id, name, price));
+    }
+
+    void displayMenu() {
+        System.out.println("\nMenu:");
+        for (MenuItem item : menu) {
+            System.out.println((link unavailable) + ". " + item.name + " - $" + item.price);
+        }
+    }
+
+    void takeOrder() {
+        Order order = new Order();
+        while (true) {
+            displayMenu();
+            System.out.print("\nEnter item number to order (0 to finish): ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); 
+
+            if (choice == 0) {
+                break;
+            }
+
+            for (MenuItem item : menu) {
+                if ((link unavailable) == choice) {
+                    order.addItem(item);
+                    System.out.println(item.name + " added to order.");
+                    break;
+                }
+            }
+        }
+
+        order.displayOrder();
+
+        System.out.print("\nConfirm order (y/n): ");
+        String confirm = scanner.nextLine();
+
+        if (confirm.equalsIgnoreCase("y")) {
+            System.out.println("\nOrder confirmed. Thank you!");
+        } else {
+            System.out.println("\nOrder cancelled.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Restaurant restaurant = new Restaurant();
+
+        restaurant.addUser("admin", "password");
+        restaurant.addUser("customer", "password");
+
+        restaurant.addMenuItem(1, "Burger", 10);
+        restaurant.addMenuItem(2, "Fries", 3);
+        restaurant.addMenuItem(3, "Soda", 2);
+        restaurant.addMenuItem(4, "Salad", 8);
+        restaurant.addMenuItem(5, "Pizza", 15);
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        restaurant.authenticate(username, password);
+
+        restaurant.takeOrder();
+    }
+}
