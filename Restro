@@ -8,7 +8,7 @@ class MenuItem {
     double price;
 
     MenuItem(int id, String name, double price) {
-        (link unavailable) = id;
+        this.id = id;
         this.name = name;
         this.price = price;
     }
@@ -121,7 +121,7 @@ class Restaurant {
                 }
 
                 for (MenuItem item : menu) {
-                    if ((link unavailable) == choice) {
+                    if (item.id == choice) {
                         order.addItem(item, quantity);
                         System.out.println(item.name + " added to order.");
                         break;
@@ -149,7 +149,7 @@ class Restaurant {
 
     public static void main(String[] args) {
         Restaurant restaurant = new Restaurant();
-        // Predefined users for testing
+    
         restaurant.users.add(new User("admin", "password"));
         restaurant.users.add(new User("user", "password"));
 
