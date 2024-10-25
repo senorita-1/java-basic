@@ -34,7 +34,7 @@ class Order {
     void displayOrder() {
         System.out.println("\nYour Order:");
         for (MenuItem item : items) {
-            System.out.println((link unavailable) + ". " + item.name + " x " + quantity + " - $" + item.price * quantity);
+            System.out.println(item.id+ ". " + item.name + " x " + quantity + " - $" + item.price * quantity);
         }
         System.out.println("Total: $" + calculateTotal());
     }
