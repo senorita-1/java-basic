@@ -8,7 +8,7 @@ class MenuItem {
     int price;
 
     MenuItem(int id, String name, int price) {
-        (link unavailable) = id;
+         = id;
         this.name = name;
         this.price = price;
     }
@@ -74,7 +74,7 @@ class Customer {
             }
 
             for (MenuItem item : restaurant.menu) {
-                if ((link unavailable) == choice) {
+                if (item.id == choice) {
                     order.addItem(item, quantity);
                     System.out.println(item.name + " added to order.");
                     break;
