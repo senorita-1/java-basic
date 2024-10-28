@@ -48,7 +48,7 @@ public class Order extends DominosPizza {
 	        }
 	        System.out.println("Subtotal: $" + calculateTotal());
 	        System.out.println("Coupon discount: -$" + applyCoupon());
-	        System.out.println("Seasonal discount (" + seasonalDiscount * 100 + "%): -$" + calculateTotal() * seasonalDiscount);
+	        System.out.println("first anniversary discount (" + first anniversary discount * 100 + "%): -$" + calculateTotal() * first anniversary discount );
 	        System.out.println("Total: $" + (calculateTotal() - applyCoupon() - calculateTotal() * seasonalDiscount));
 	    }
 }
